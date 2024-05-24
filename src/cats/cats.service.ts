@@ -17,10 +17,11 @@ export class CatsService {
     return this.cats[i];
   }
   update(i: number, updateCatDto: UpdateCatDto): Cat {
+    if (i < 0 || i >= this.cats.length) {
+      return null;
+    }
     const updatedCat = { ...this.cats[i], ...updateCatDto };
-
     this.cats[i] = updatedCat;
-
     return updatedCat;
   }
 
